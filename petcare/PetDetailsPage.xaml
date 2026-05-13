@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:petcare.Controls"
+             x:Class="petcare.PetDetailsPage"
+             Title="Pet Details"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#EDE2D8">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- MAIN CONTENT -->
+        <Grid Grid.Row="0"
+              RowDefinitions="260,*">
+
+            <!-- TOP PET PHOTO -->
+            <Grid Grid.Row="0">
+                <Image x:Name="PetImage"
+                       Aspect="AspectFill"
+                       HeightRequest="260" />
+
+                <!-- BACK BUTTON -->
+                <Label Text="‹"
+                       FontSize="34"
+                       TextColor="White"
+                       Margin="15,10,0,0"
+                       VerticalOptions="Start"
+                       HorizontalOptions="Start">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <!-- DETAILS CONTENT -->
+            <ScrollView Grid.Row="1"
+                        Margin="0,-35,0,0">
+
+                <VerticalStackLayout Padding="13,0,13,20"
+                                     Spacing="12">
+
+                    <!-- PET PROFILE CARD -->
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            Padding="12">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="13" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  ColumnSpacing="8">
+
+                                <Label Text="🐱"
+                                       FontSize="28"
+                                       VerticalOptions="Center" />
+
+                                <Label Text="Pet’s Profile"
+                                       Grid.Column="1"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       VerticalOptions="Center" />
+
+                                <Button Text="Edit"
+                                        Grid.Column="2"
+                                        FontSize="9"
+                                        HeightRequest="22"
+                                        Padding="10,0"
+                                        BackgroundColor="#A99586"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        Clicked="OnEditClicked" />
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*"
+                                  RowDefinitions="Auto,Auto,Auto"
+                                  RowSpacing="4">
+
+                                <Label Text="Name:"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PetNameLabel"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       TextColor="#4A403A" />
+
+                                <Label Text="Breed:"
+                                       Grid.Row="1"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PetBreedLabel"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       TextColor="#4A403A" />
+
+                                <Label Text="Type:"
+                                       Grid.Row="2"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PetTypeLabel"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       TextColor="#4A403A" />
+
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*"
+                                  RowDefinitions="Auto,Auto,Auto"
+                                  RowSpacing="4">
+
+                                <Label Text="Weight:"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PetWeightLabel"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       TextColor="#4A403A" />
+
+                                <Label Text="Gender:"
+                                       Grid.Row="1"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PetGenderLabel"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       TextColor="#4A403A" />
+
+                                <Label Text="Birthday:"
+                                       Grid.Row="2"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PetBirthdayLabel"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       FontSize="12"
+                                       TextColor="#4A403A" />
+
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- FEEDING PLAN CARD -->
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            Padding="12">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="13" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  ColumnSpacing="8">
+
+                                <Label Text="🍲"
+                                       FontSize="28"
+                                       VerticalOptions="Center" />
+
+                                <Label Text="Feeding Plan"
+                                       Grid.Column="1"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="Black"
+                                       VerticalOptions="Center" />
+
+                                <Button Text="Edit"
+                                        Grid.Column="2"
+                                        FontSize="9"
+                                        HeightRequest="22"
+                                        Padding="10,0"
+                                        BackgroundColor="#A99586"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        Clicked="OnEditFeedingClicked" />
+                            </Grid>
+
+                            <Grid ColumnDefinitions="*,*"
+                                  RowDefinitions="Auto,Auto,Auto,Auto"
+                                  RowSpacing="5">
+
+                                <Label Text="Meal Type"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="MealTypeLabel"
+                                       Grid.Column="1"
+                                       FontSize="11"
+                                       TextColor="#8B7D73" />
+
+                                <Label Text="Meals per day"
+                                       Grid.Row="1"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="MealsPerDayLabel"
+                                       Grid.Row="1"
+                                       Grid.Column="1"
+                                       FontSize="11"
+                                       TextColor="#8B7D73" />
+
+                                <Label Text="Portion per meal"
+                                       Grid.Row="2"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="PortionLabel"
+                                       Grid.Row="2"
+                                       Grid.Column="1"
+                                       FontSize="11"
+                                       TextColor="#8B7D73" />
+
+                                <Label Text="Feeding times"
+                                       Grid.Row="3"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="Black" />
+
+                                <Label x:Name="FeedingTimesLabel"
+                                       Grid.Row="3"
+                                       Grid.Column="1"
+                                       FontSize="11"
+                                       TextColor="#8B7D73" />
+
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <!-- REMINDERS / VISIT / HEALTH CARD -->
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            Padding="12">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="13" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="15">
+
+                            <Grid ColumnDefinitions="Auto,*,Auto"
+                                  ColumnSpacing="8">
+
+                                <Label Text="🐾"
+                                       FontSize="22"
+                                       VerticalOptions="Center" />
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Spacing="0">
+
+                                    <Label Text="Next vet visit"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+
+                                    <Label x:Name="NextVisitLabel"
+                                           FontSize="11"
+                                           TextColor="#6E625A" />
+                                </VerticalStackLayout>
+
+                                <Button Text="Edit"
+                                        Grid.Column="2"
+                                        FontSize="9"
+                                        HeightRequest="22"
+                                        Padding="10,0"
+                                        BackgroundColor="#A99586"
+                                        TextColor="White"
+                                        CornerRadius="10"
+                                        Clicked="OnEditVisitClicked" />
+                            </Grid>
+
+                            <Grid ColumnDefinitions="Auto,*"
+                                  ColumnSpacing="8">
+
+                                <Label Text="▣"
+                                       FontSize="18"
+                                       TextColor="#5B514A"
+                                       VerticalOptions="Center" />
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Spacing="0">
+
+                                    <Label Text="Key Reminders"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+
+                                    <Label x:Name="ReminderLabel"
+                                           FontSize="11"
+                                           TextColor="#6E625A" />
+                                </VerticalStackLayout>
+                            </Grid>
+
+                            <Grid ColumnDefinitions="Auto,*"
+                                  ColumnSpacing="8">
+
+                                <Label Text="❤"
+                                       FontSize="18"
+                                       TextColor="#5B514A"
+                                       VerticalOptions="Center" />
+
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Spacing="0">
+
+                                    <Label Text="Healthy ✓"
+                                           FontSize="13"
+                                           FontAttributes="Bold"
+                                           TextColor="Black" />
+
+                                    <Label x:Name="HealthStatusLabel"
+                                           FontSize="11"
+                                           TextColor="#6E625A" />
+                                </VerticalStackLayout>
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Border>
+
+                    <Button Text="Delete Pet"
+                            BackgroundColor="IndianRed"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="25"
+                            HeightRequest="48"
+                            Margin="0,8,0,0"
+                            Clicked="OnDeleteClicked" />
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+        </Grid>
+
+        <!-- FIXED BOTTOM NAVIGATION BAR -->
+        <controls:BottomNav Grid.Row="1"
+                            CurrentPage="Pets" />
+
+    </Grid>
+
+</ContentPage>

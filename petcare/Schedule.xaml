@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:petcare.Controls"
+             x:Class="petcare.Schedule"
+             Title="Appointments"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="Auto,*,Auto,Auto">
+
+        <!-- HEADER -->
+        <StackLayout Grid.Row="0"
+                     Padding="20"
+                     Spacing="5">
+
+            <Label Text="Appointments"
+                   FontSize="28"
+                   FontAttributes="Bold"/>
+
+            <Label Text="Manage your pet's appointment"
+                   FontSize="14"
+                   TextColor="Gray"/>
+
+        </StackLayout>
+
+        <!-- CONTENT -->
+        <ScrollView Grid.Row="1">
+
+            <VerticalStackLayout x:Name="AppointmentsContainer"
+                                 Padding="20"
+                                 Spacing="15"/>
+
+        </ScrollView>
+
+        <!-- ADD BUTTON -->
+        <Grid Grid.Row="2"
+              BackgroundColor="White">
+
+            <Button Text="Add Appointments"
+                    BackgroundColor="#BFA38E"
+                    TextColor="White"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    Margin="20"
+                    Clicked="OnAddAppointmentClicked"/>
+
+        </Grid>
+
+        <!-- BOTTOM NAV -->
+        <controls:BottomNav Grid.Row="3"
+                            CurrentPage="Appointments"/>
+
+    </Grid>
+
+</ContentPage>

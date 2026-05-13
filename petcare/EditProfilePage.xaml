@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="petcare.EditProfilePage"
+             Title="Edit Profile"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20,25,20,25"
+                             Spacing="18">
+
+            <!-- TOP BAR -->
+            <Grid ColumnDefinitions="Auto,*">
+
+                <Label Text="‹"
+                       FontSize="32"
+                       TextColor="Black"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnBackClicked" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label Grid.Column="1"
+                       Text="Edit Profile"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="Black"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center" />
+
+            </Grid>
+
+            <!-- PROFILE PHOTO -->
+            <VerticalStackLayout HorizontalOptions="Center"
+                                 Spacing="10"
+                                 Margin="0,10,0,10">
+
+                <Border WidthRequest="130"
+                        HeightRequest="130"
+                        BackgroundColor="#E8DED5"
+                        StrokeThickness="0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="65" />
+                    </Border.StrokeShape>
+
+                    <Image x:Name="EditProfileImage"
+                           Aspect="AspectFill"
+                           Source="profile_default.png" />
+
+                </Border>
+
+                <Button Text="Change Profile Picture"
+                        Clicked="OnChangePhotoClicked"
+                        BackgroundColor="#BFA38E"
+                        TextColor="White"
+                        CornerRadius="20"
+                        HeightRequest="38"
+                        Padding="18,0" />
+
+            </VerticalStackLayout>
+
+            <!-- FORM -->
+            <Border BackgroundColor="#E8DED5"
+                    StrokeThickness="0"
+                    Padding="15">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="PERSONAL INFORMATION"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+
+                    <Entry x:Name="EntryFirstName"
+                           Placeholder="First Name"
+                           TextColor="Black"
+                           PlaceholderColor="#6E625A"
+                           BackgroundColor="White" />
+
+                    <Entry x:Name="EntryLastName"
+                           Placeholder="Last Name"
+                           TextColor="Black"
+                           PlaceholderColor="#6E625A"
+                           BackgroundColor="White" />
+
+                    <Entry x:Name="EntryPhone"
+                           Placeholder="Phone Number"
+                           Keyboard="Telephone"
+                           TextColor="Black"
+                           PlaceholderColor="#6E625A"
+                           BackgroundColor="White" />
+
+                    <Entry x:Name="EntryEmail"
+                           Placeholder="Email"
+                           Keyboard="Email"
+                           TextColor="Black"
+                           PlaceholderColor="#6E625A"
+                           BackgroundColor="White" />
+
+                    <Entry x:Name="EntryAddress"
+                           Placeholder="Home Address"
+                           TextColor="Black"
+                           PlaceholderColor="#6E625A"
+                           BackgroundColor="White" />
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- NOTIFICATIONS -->
+            <Border BackgroundColor="#E8DED5"
+                    StrokeThickness="0"
+                    Padding="15">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="18" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="12">
+
+                    <Label Text="NOTIFICATION SETTINGS"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="Black" />
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Push Notifications"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+                        <Switch x:Name="EditSwitchPush"
+                                Grid.Column="1" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Email Updates"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+                        <Switch x:Name="EditSwitchEmail"
+                                Grid.Column="1" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="App Reminders"
+                               FontAttributes="Bold"
+                               TextColor="Black"
+                               VerticalOptions="Center" />
+                        <Switch x:Name="EditSwitchReminder"
+                                Grid.Column="1" />
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+            <!-- SAVE BUTTON -->
+            <Button Text="Save Changes"
+                    Clicked="OnSaveClicked"
+                    BackgroundColor="#BFA38E"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="25"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

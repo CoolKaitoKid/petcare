@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="petcare.AppointmentPage"
+             Title="Add Appointment">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label Text="Add Appointment"
+                   FontSize="28"
+                   FontAttributes="Bold" />
+
+            <!-- Pet Name -->
+            <Entry x:Name="PetNameEntry"
+                   Placeholder="Pet Name" />
+
+            <!-- TYPE DROPDOWN -->
+            <Picker x:Name="TypePicker"
+                    Title="Select Type">
+                <Picker.Items>
+                    <x:String>Checkup</x:String>
+                    <x:String>Vaccination</x:String>
+                    <x:String>Grooming</x:String>
+                    <x:String>Deworming</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <!-- DATE -->
+            <DatePicker x:Name="DatePicker" />
+
+            <!-- TIME -->
+            <TimePicker x:Name="TimePicker" />
+
+            <!-- CLINIC -->
+            <Entry x:Name="ClinicEntry"
+                   Placeholder="Clinic Name" />
+
+            <!-- IMAGE -->
+            <Frame HeightRequest="120"
+                   WidthRequest="120"
+                   HorizontalOptions="Center"
+                   CornerRadius="60"
+                   IsClippedToBounds="True">
+
+                <Image x:Name="PetImage"
+                       Source="dog_avatar.png"
+                       Aspect="AspectFill"/>
+            </Frame>
+
+            <Button Text="Choose Image"
+                    Clicked="OnPickImage"/>
+
+            <!-- SAVE -->
+            <Button Text="Save Appointment"
+                    BackgroundColor="#BFA38E"
+                    TextColor="White"
+                    Clicked="OnSave"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

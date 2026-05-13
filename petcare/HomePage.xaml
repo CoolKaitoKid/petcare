@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:petcare.Controls"
+             x:Class="petcare.HomePage"
+             Title="HomePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- SCROLLABLE CONTENT -->
+        <ScrollView Grid.Row="0">
+
+            <VerticalStackLayout Spacing="0">
+
+                <!-- HEADER -->
+                <Grid HeightRequest="300">
+
+                    <Image Source="cat_main.jpg"
+                           Aspect="AspectFill" />
+
+                    <BoxView Color="#80000000" />
+
+
+                    <VerticalStackLayout VerticalOptions="End"
+                                         Padding="20">
+
+                        <Label Text="Take care of your pet"
+                               TextColor="White"
+                               FontSize="28"
+                               FontAttributes="Bold" />
+
+                        <Label TextColor="White"
+                               FontSize="18">
+
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Hello, " />
+                                    <Span Text="{Binding CurrentUser.FirstName}"
+                                          FontAttributes="Bold" />
+                                    <Span Text="!" />
+                                </FormattedString>
+                            </Label.FormattedText>
+
+                        </Label>
+
+                    </VerticalStackLayout>
+
+                </Grid>
+
+                <!-- CONTENT -->
+                <VerticalStackLayout Padding="20"
+                                     Spacing="20"
+                                     BackgroundColor="White">
+
+                    <!-- SEARCH -->
+                    <SearchBar x:Name="SearchBarPets"
+                               Placeholder="Search pets, reminders..."
+                               BackgroundColor="#F5F5F5" />
+
+                    <!-- APPOINTMENTS -->
+                    <Label Text="Appointments Reminder"
+                           FontAttributes="Bold"
+                           FontSize="18" />
+
+                    <ScrollView Orientation="Horizontal"
+                                HorizontalScrollBarVisibility="Never">
+
+                        <HorizontalStackLayout x:Name="AppointmentsContainer"
+                                               Spacing="10" />
+
+                    </ScrollView>
+
+                    <!-- SCHEDULE -->
+                    <Label Text="Today's Schedule"
+                           FontAttributes="Bold"
+                           FontSize="18" />
+
+                    <Border BackgroundColor="#FDF5E6"
+                            StrokeThickness="0">
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnScheduleCardTapped" />
+                        </Border.GestureRecognizers>
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="15" />
+                        </Border.StrokeShape>
+
+                        <HorizontalStackLayout Spacing="15"
+                                               Padding="15"
+                                               InputTransparent="True">
+
+                            <Image Source="food_icon.png"
+                                   HeightRequest="40" />
+
+                            <VerticalStackLayout>
+
+                                <Label Text="Next Feeding"
+                                       FontAttributes="Bold" />
+
+                                <Label Text="7:00 AM Today"
+                                       FontSize="12" />
+
+                            </VerticalStackLayout>
+
+                        </HorizontalStackLayout>
+
+                    </Border>
+
+                    <!-- BUTTON -->
+                    <Button Text="View full schedule"
+                            BackgroundColor="#8B7355"
+                            TextColor="White"
+                            CornerRadius="20"
+                            Margin="0,0,0,20"
+                            Clicked="OnViewScheduleClicked" />
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <!-- FIXED BOTTOM NAV -->
+        <controls:BottomNav Grid.Row="1"
+                            CurrentPage="Home" />
+
+    </Grid>
+
+</ContentPage>

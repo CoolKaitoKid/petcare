@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:petcare.Models"
+             x:Class="petcare.ViewFullSchedulePage"
+             Title="ViewFullSchedulePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#FFFDF8">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Scrollable Content -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Spacing="15">
+
+                <!-- Header -->
+                <Grid HeightRequest="200">
+                    <Image Source="cat_header.png" Aspect="AspectFill"/>
+                    <VerticalStackLayout Padding="20" VerticalOptions="End">
+                        <Label Text="Take care of your pet"
+                               FontSize="26"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                        <Label TextColor="White" FontSize="16">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="Hello, " />
+                                    <Span Text="{Binding CurrentUser.FirstName}" FontAttributes="Bold"/>
+                                    <Span Text="!" />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <!-- Search Bar -->
+                <SearchBar x:Name="SearchBarAppointments"
+                           Placeholder="Search pets, reminders, appointments..."
+                           BackgroundColor="#D9D9D9"
+                           Margin="20,0"
+                           TextChanged="OnSearchTextChanged"/>
+
+                <!-- Appointments Reminder -->
+                <Label Text="Appointments Reminder"
+                       FontAttributes="Bold"
+                       FontSize="18"
+                       Margin="20,0,0,0"/>
+
+                <CollectionView x:Name="AppointmentsList"
+                                ItemsLayout="HorizontalList"
+                                Margin="0,0,0,10"
+                                x:DataType="models:Appointment">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Appointment">
+                            <Border BackgroundColor="#F5EBDD"
+                                    Padding="10"
+                                    Margin="10,0"
+                                    WidthRequest="140"
+                                    HeightRequest="180">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="15"/>
+                                </Border.StrokeShape>
+                                <VerticalStackLayout HorizontalOptions="Center"
+                                                     VerticalOptions="Center">
+                                    <Button BackgroundColor="Transparent"
+                                            ImageSource="{Binding Type, Converter={StaticResource AppointmentIconConverter}}"
+                                            Clicked="OnAppointmentClicked"/>
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                    <Label Text="{Binding Type}" FontSize="12" HorizontalTextAlignment="Center"/>
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <!-- Today's Schedule -->
+                <Label Text="Today's Schedule" FontAttributes="Bold" FontSize="18" Margin="20,0,0,0"/>
+
+                <Border BackgroundColor="#F5EBDD" Padding="10" Margin="20,0,20,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="15"/>
+                    </Border.StrokeShape>
+                    <VerticalStackLayout>
+                        <Label Text="Next Feeding" FontAttributes="Bold"/>
+                        <Label Text="7:00 AM Today" FontSize="12"/>
+                        <Label Text="1/2 cup for Tchai" FontSize="12"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Full Schedule Button -->
+                <Button Text="View full schedule"
+                        BackgroundColor="#8B6F5E"
+                        TextColor="Black"
+                        CornerRadius="20"
+                        Margin="20"
+                        Clicked="OnViewFullScheduleClicked"/>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Bottom Navigation (Fixed) -->
+        <Grid Grid.Row="1" BackgroundColor="White" HeightRequest="60" Padding="10" ColumnDefinitions="*,*,*,*">
+            <ImageButton Source="{Binding HomeIcon}" Clicked="OnHomeClicked" Grid.Column="0" BackgroundColor="Transparent"/>
+            <ImageButton Source="{Binding PetsIcon}" Clicked="OnPetsClicked" Grid.Column="1" BackgroundColor="Transparent"/>
+            <ImageButton Source="{Binding AppointmentsIcon}" Clicked="OnAppointmentsClicked" Grid.Column="2" BackgroundColor="Transparent"/>
+            <ImageButton Source="{Binding ProfileIcon}" Clicked="OnProfileClicked" Grid.Column="3" BackgroundColor="Transparent"/>
+        </Grid>
+    </Grid>
+</ContentPage>

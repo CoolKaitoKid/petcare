@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="petcare.SelectPetTypePage"
+    Title="Add Pet"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F8F5F2">
+
+    <Grid Padding="16,20,16,10"
+          RowDefinitions="Auto,*,Auto">
+
+        <!-- TOP BAR -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="Auto,*,Auto">
+
+            <Label Text="‹"
+                   FontSize="28"
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </Grid>
+
+        <!-- STEP 1: PET TYPE -->
+        <VerticalStackLayout x:Name="StepTypeView"
+                             Grid.Row="1"
+                             Spacing="25">
+
+            <Label Text="What kind of pet do you&#10;have?"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Margin="0,5,0,10" />
+
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  RowSpacing="25"
+                  ColumnSpacing="25"
+                  HorizontalOptions="Center">
+
+                <!-- DOG -->
+                <VerticalStackLayout Grid.Row="0"
+                                     Grid.Column="0"
+                                     Spacing="8"
+                                     HorizontalOptions="Center">
+
+                    <Border HeightRequest="90"
+                            WidthRequest="90"
+                            StrokeThickness="0"
+                            BackgroundColor="#D8C8BC">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="45" />
+                        </Border.StrokeShape>
+
+                        <Image Source="dog_select.png"
+                               Aspect="AspectFill" />
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnDogSelected" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <Label Text="Dog"
+                           FontSize="16"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+                <!-- CAT -->
+                <VerticalStackLayout Grid.Row="0"
+                                     Grid.Column="1"
+                                     Spacing="8"
+                                     HorizontalOptions="Center">
+
+                    <Border HeightRequest="90"
+                            WidthRequest="90"
+                            StrokeThickness="0"
+                            BackgroundColor="#D8C8BC">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="45" />
+                        </Border.StrokeShape>
+
+                        <Image Source="cat_select.png"
+                               Aspect="AspectFill" />
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCatSelected" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <Label Text="Cat"
+                           FontSize="16"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+                <!-- OTHER -->
+                <VerticalStackLayout Grid.Row="1"
+                                     Grid.Column="0"
+                                     Grid.ColumnSpan="2"
+                                     Spacing="8"
+                                     HorizontalOptions="Center">
+
+                    <Border HeightRequest="90"
+                            WidthRequest="90"
+                            StrokeThickness="0"
+                            BackgroundColor="#D8C8BC">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="45" />
+                        </Border.StrokeShape>
+
+                        <Image Source="others.jpg"
+                               Aspect="AspectFill" />
+
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnOtherSelected" />
+                        </Border.GestureRecognizers>
+                    </Border>
+
+                    <Label Text="Other"
+                           FontSize="16"
+                           TextColor="Black"
+                           HorizontalOptions="Center" />
+
+                </VerticalStackLayout>
+
+            </Grid>
+
+        </VerticalStackLayout>
+
+        <!-- STEP 2: OTHER PET TYPE -->
+        <VerticalStackLayout x:Name="StepOtherTypeView"
+                             Grid.Row="1"
+                             IsVisible="False"
+                             Spacing="5">
+
+            <Label Text="What type of pet is it?"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Margin="0,5,0,0" />
+
+            <Entry x:Name="EntryOtherPetType"
+                   Placeholder="Example: Hamster, Turtle"
+                   TextColor="Black"
+                   PlaceholderColor="#6E625A"
+                   BackgroundColor="Transparent"
+                   HeightRequest="35" />
+
+            <BoxView HeightRequest="1"
+                     BackgroundColor="#A79B92"
+                     Margin="0,-8,0,0" />
+
+        </VerticalStackLayout>
+
+        <!-- BOTTOM BUTTON FOR OTHER PET -->
+        <Button x:Name="BottomButton"
+                Grid.Row="2"
+                Text="Continue"
+                Clicked="OnBottomButtonClicked"
+                BackgroundColor="#BFA38E"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="25"
+                HeightRequest="48"
+                Margin="20,0,20,0"
+                IsVisible="False" />
+
+    </Grid>
+
+</ContentPage>

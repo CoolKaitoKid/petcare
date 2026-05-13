@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:petcare.Controls"
+             x:Class="petcare.ProfileOwner"
+             Title="ProfileOwner"
+             BackgroundColor="#F5F5F5">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- SCROLL CONTENT -->
+        <ScrollView Grid.Row="0">
+
+            <VerticalStackLayout Spacing="0">
+
+                <!-- HEADER IMAGE -->
+                <Grid HeightRequest="250">
+                    <Image x:Name="ProfileHeaderImage"
+                           Aspect="AspectFill"
+                           Source="maine_coon.jpg" />
+
+                    <BoxView BackgroundColor="#66000000"/>
+                </Grid>
+
+                <!-- PROFILE CARD -->
+                <Border BackgroundColor="White"
+                        StrokeThickness="0"
+                        Margin="0,-40,0,0">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="30,30,0,0"/>
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="20" Padding="20">
+
+                        <!-- PROFILE PIC -->
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
+
+                            <Border WidthRequest="120"
+                                    HeightRequest="120"
+                                    BackgroundColor="#EEE">
+
+                                <Border.StrokeShape>
+                                    <Ellipse/>
+                                </Border.StrokeShape>
+
+                                <Image x:Name="ProfileImage"
+                                       Aspect="AspectFill"/>
+                            </Border>
+
+                            <Label x:Name="LblUserName"
+                                   FontAttributes="Bold"
+                                   FontSize="20"
+                                   HorizontalOptions="Center"/>
+
+                            <Label Text="Pet Parent"
+                                   FontSize="14"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"/>
+
+                        </VerticalStackLayout>
+
+                        <!-- PERSONAL INFO -->
+                        <Border BackgroundColor="#EEDFCC"
+                                StrokeThickness="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15"/>
+                            </Border.StrokeShape>
+
+                            <VerticalStackLayout Padding="15" Spacing="10">
+                                <Label Text="Personal Information"
+                                       FontAttributes="Bold" />
+                                <Label x:Name="LblFullName"/>
+                                <Label x:Name="LblPhone"/>
+                                <Label x:Name="LblEmail"/>
+                                <Label x:Name="LblAddress"/>
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                        <!-- NOTIFICATIONS -->
+                        <Border BackgroundColor="#EEDFCC"
+                                StrokeThickness="0">
+
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="15"/>
+                            </Border.StrokeShape>
+
+                            <VerticalStackLayout Padding="15" Spacing="10">
+
+                                <Label Text="Notification Settings"
+                                       FontAttributes="Bold"/>
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="Push Notifications"/>
+                                    <Switch x:Name="SwitchPush"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="Email Updates"/>
+                                    <Switch x:Name="SwitchEmail"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Spacing="10">
+                                    <Label Text="App Reminders"/>
+                                    <Switch x:Name="SwitchReminder"/>
+                                </HorizontalStackLayout>
+
+                            </VerticalStackLayout>
+
+                        </Border>
+
+                        <Button Text="Edit Profile"
+                                BackgroundColor="#8B7355"
+                                TextColor="White"
+                                CornerRadius="20"
+                                Clicked="OnEditProfileClicked"/>
+
+                    </VerticalStackLayout>
+
+                </Border>
+
+            </VerticalStackLayout>
+
+        </ScrollView>
+
+        <!-- BOTTOM NAV -->
+        <controls:BottomNav Grid.Row="1"
+                            CurrentPage="Profile"/>
+
+    </Grid>
+
+</ContentPage>

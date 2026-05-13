@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="petcare.LandingPage"
+             Title="LandingPage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#3C280D">
+
+    <Grid>
+
+        <Image Source="landing_pet.jpg"
+               Aspect="AspectFill" />
+
+        <BoxView BackgroundColor="#33000000" />
+
+        <VerticalStackLayout Padding="28,70,28,30"
+                             Spacing="0">
+
+            <Label Text="Take Care of&#10;Your Pet"
+                   TextColor="White"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Deepen your connection with your&#10;pets with helpful care reminders"
+                   TextColor="#F8F1E8"
+                   FontSize="10"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   Margin="0,18,0,0" />
+
+            <Label Text="PetCare"
+                   TextColor="White"
+                   FontSize="58"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,70,0,0" />
+
+        </VerticalStackLayout>
+
+        <Button Text="Get started"
+                Clicked="OnGetStartedClicked"
+                BackgroundColor="White"
+                TextColor="#80471C"
+                FontAttributes="Bold"
+                HeightRequest="48"
+                CornerRadius="24"
+                Margin="32,0,32,35"
+                VerticalOptions="End" />
+
+    </Grid>
+</ContentPage>

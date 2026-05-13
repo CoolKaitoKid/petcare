@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="petcare.AddPet"
+    Title="Add Pet"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="#F8F5F2">
+
+    <Grid Padding="16,20,16,10"
+          RowDefinitions="Auto,*,Auto">
+
+        <!-- TOP BAR -->
+        <Grid Grid.Row="0"
+              ColumnDefinitions="Auto,*,Auto">
+
+            <Label Text="‹"
+                   FontSize="28"
+                   TextColor="Black"
+                   VerticalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label x:Name="SkipLabel"
+                   Grid.Column="2"
+                   Text="Skip"
+                   FontSize="11"
+                   TextColor="#6E625A"
+                   VerticalOptions="Center"
+                   IsVisible="False">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSkipClicked" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </Grid>
+
+        <!-- STEP 1: PET NAME -->
+        <VerticalStackLayout x:Name="StepNameView"
+                             Grid.Row="1"
+                             Spacing="5">
+
+            <Label x:Name="PetNameQuestionLabel"
+                   Text="What’s your pet’s name?"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Margin="0,5,0,0" />
+
+            <Entry x:Name="EntryPetName"
+                   Placeholder="Name"
+                   TextColor="Black"
+                   PlaceholderColor="#6E625A"
+                   BackgroundColor="Transparent"
+                   HeightRequest="35" />
+
+            <BoxView HeightRequest="1"
+                     BackgroundColor="#A79B92"
+                     Margin="0,-8,0,0" />
+
+        </VerticalStackLayout>
+
+        <!-- STEP 2: PHOTO -->
+        <VerticalStackLayout x:Name="StepPhotoView"
+                             Grid.Row="1"
+                             IsVisible="False"
+                             Spacing="35">
+
+            <Label Text="Add a photo for your pet"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   Margin="0,5,0,30" />
+
+            <Border HeightRequest="155"
+                    WidthRequest="155"
+                    StrokeThickness="0"
+                    BackgroundColor="#BFAE9E"
+                    HorizontalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="78" />
+                </Border.StrokeShape>
+
+                <Grid>
+                    <Image x:Name="PreviewImage"
+                           Source="dog_avatar.png"
+                           Aspect="AspectFill"
+                           Opacity="0.75" />
+
+                    <Label Text="Add photo"
+                           TextColor="White"
+                           FontSize="22"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+                </Grid>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnPickPhoto" />
+                </Border.GestureRecognizers>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+        <!-- BOTTOM BUTTON -->
+        <Button x:Name="BottomButton"
+                Grid.Row="2"
+                Text="That’s my buddy!"
+                Clicked="OnBottomButtonClicked"
+                BackgroundColor="#BFA38E"
+                TextColor="White"
+                FontAttributes="Bold"
+                CornerRadius="25"
+                HeightRequest="48"
+                Margin="20,0,20,0" />
+
+    </Grid>
+
+</ContentPage>
