@@ -30,9 +30,9 @@ public partial class HomePage : ContentPage
         AppointmentsContainer.Children.Clear();
 
         var upcomingAppointments = AppData.Appointments
-            .Where(a => a.Schedule >= DateTime.Now)
-            .OrderBy(a => a.Schedule)
-            .ToList();
+    .Where(a => a.Schedule.Date >= DateTime.Today && !a.Done)
+    .OrderBy(a => a.Schedule)
+    .ToList();
 
         if (upcomingAppointments.Count == 0)
         {

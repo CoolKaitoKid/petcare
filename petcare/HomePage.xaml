@@ -16,40 +16,60 @@
             <VerticalStackLayout Spacing="0">
 
                 <!-- HEADER -->
-                <Grid HeightRequest="300">
+                <Grid HeightRequest="300"
+      BackgroundColor="Black">
 
-                    <Image Source="cat_main.jpg"
-                           Aspect="AspectFill" />
+                    <!-- IMAGE ON TOP OF BLACK BACKGROUND -->
+                    <Image Source="home_cat_main.jpg"
+           Aspect="AspectFill"
+           HorizontalOptions="Fill"
+           VerticalOptions="Fill"
+           HeightRequest="300"
+           Opacity="0.75" />
 
-                    <BoxView Color="#80000000" />
+                    <!-- SOFT DARK OVERLAY -->
+                    <BoxView Color="#33000000"
+             HorizontalOptions="Fill"
+             VerticalOptions="Fill" />
 
+                    <!-- TEXT CONTAINER -->
+                    <Border BackgroundColor="#66000000"
+            StrokeThickness="0"
+            Padding="14,10"
+            Margin="20,0,20,20"
+            VerticalOptions="End"
+            HorizontalOptions="Start">
 
-                    <VerticalStackLayout VerticalOptions="End"
-                                         Padding="20">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="16" />
+                        </Border.StrokeShape>
 
-                        <Label Text="Take care of your pet"
-                               TextColor="White"
-                               FontSize="28"
-                               FontAttributes="Bold" />
+                        <VerticalStackLayout Spacing="2">
 
-                        <Label TextColor="White"
-                               FontSize="18">
+                            <Label Text="Take care of your pet"
+                   TextColor="White"
+                   FontSize="28"
+                   FontAttributes="Bold" />
 
-                            <Label.FormattedText>
-                                <FormattedString>
-                                    <Span Text="Hello, " />
-                                    <Span Text="{Binding CurrentUser.FirstName}"
-                                          FontAttributes="Bold" />
-                                    <Span Text="!" />
-                                </FormattedString>
-                            </Label.FormattedText>
+                            <Label TextColor="White"
+                   FontSize="16">
 
-                        </Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Hello, " />
+                                        <Span Text="{Binding CurrentUser.FirstName}"
+                              FontAttributes="Bold" />
+                                        <Span Text="!" />
+                                    </FormattedString>
+                                </Label.FormattedText>
 
-                    </VerticalStackLayout>
+                            </Label>
+
+                        </VerticalStackLayout>
+
+                    </Border>
 
                 </Grid>
-
                 <!-- CONTENT -->
                 <VerticalStackLayout Padding="20"
                                      Spacing="20"
@@ -93,8 +113,10 @@
                                                Padding="15"
                                                InputTransparent="True">
 
-                            <Image Source="food_icon.png"
-                                   HeightRequest="40" />
+                            <Image Source="food_icon.jpg"
+                                   HeightRequest="40"
+                                   WidthRequest="40"
+                                   Aspect="AspectFit" />
 
                             <VerticalStackLayout>
 

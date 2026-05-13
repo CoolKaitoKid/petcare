@@ -148,7 +148,7 @@ public partial class AddPet : ContentPage
 
         await DisplayAlert("Success", "Pet added!", "OK");
 
-        await Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new MyPets());
     }
 
     private string GetDefaultImageForPetType(string type)

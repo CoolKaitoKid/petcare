@@ -1,133 +1,353 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:petcare.Controls"
              x:Class="petcare.ProfileOwner"
              Title="ProfileOwner"
-             BackgroundColor="#F5F5F5">
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="White">
 
     <Grid RowDefinitions="*,Auto">
 
-        <!-- SCROLL CONTENT -->
-        <ScrollView Grid.Row="0">
+        <!-- FIXED CONTENT -->
+        <Grid Grid.Row="0"
+              Padding="14,18,14,8"
+              RowDefinitions="Auto,Auto,*">
 
-            <VerticalStackLayout Spacing="0">
+            <!-- APP LOGO -->
+            <VerticalStackLayout Grid.Row="0"
+                                 HorizontalOptions="Center"
+                                 Spacing="0"
+                                 Margin="0,0,0,8">
 
-                <!-- HEADER IMAGE -->
-                <Grid HeightRequest="250">
-                    <Image x:Name="ProfileHeaderImage"
-                           Aspect="AspectFill"
-                           Source="maine_coon.jpg" />
+                <Image Source="pet_logo_black.png"
+                       HeightRequest="28"
+                       WidthRequest="60"
+                       Aspect="AspectFit"
+                       HorizontalOptions="Center" />
 
-                    <BoxView BackgroundColor="#66000000"/>
-                </Grid>
-
-                <!-- PROFILE CARD -->
-                <Border BackgroundColor="White"
-                        StrokeThickness="0"
-                        Margin="0,-40,0,0">
-
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="30,30,0,0"/>
-                    </Border.StrokeShape>
-
-                    <VerticalStackLayout Spacing="20" Padding="20">
-
-                        <!-- PROFILE PIC -->
-                        <VerticalStackLayout HorizontalOptions="Center" Spacing="10">
-
-                            <Border WidthRequest="120"
-                                    HeightRequest="120"
-                                    BackgroundColor="#EEE">
-
-                                <Border.StrokeShape>
-                                    <Ellipse/>
-                                </Border.StrokeShape>
-
-                                <Image x:Name="ProfileImage"
-                                       Aspect="AspectFill"/>
-                            </Border>
-
-                            <Label x:Name="LblUserName"
-                                   FontAttributes="Bold"
-                                   FontSize="20"
-                                   HorizontalOptions="Center"/>
-
-                            <Label Text="Pet Parent"
-                                   FontSize="14"
-                                   TextColor="Gray"
-                                   HorizontalOptions="Center"/>
-
-                        </VerticalStackLayout>
-
-                        <!-- PERSONAL INFO -->
-                        <Border BackgroundColor="#EEDFCC"
-                                StrokeThickness="0">
-
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15"/>
-                            </Border.StrokeShape>
-
-                            <VerticalStackLayout Padding="15" Spacing="10">
-                                <Label Text="Personal Information"
-                                       FontAttributes="Bold" />
-                                <Label x:Name="LblFullName"/>
-                                <Label x:Name="LblPhone"/>
-                                <Label x:Name="LblEmail"/>
-                                <Label x:Name="LblAddress"/>
-                            </VerticalStackLayout>
-
-                        </Border>
-
-                        <!-- NOTIFICATIONS -->
-                        <Border BackgroundColor="#EEDFCC"
-                                StrokeThickness="0">
-
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="15"/>
-                            </Border.StrokeShape>
-
-                            <VerticalStackLayout Padding="15" Spacing="10">
-
-                                <Label Text="Notification Settings"
-                                       FontAttributes="Bold"/>
-
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="Push Notifications"/>
-                                    <Switch x:Name="SwitchPush"/>
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="Email Updates"/>
-                                    <Switch x:Name="SwitchEmail"/>
-                                </HorizontalStackLayout>
-
-                                <HorizontalStackLayout Spacing="10">
-                                    <Label Text="App Reminders"/>
-                                    <Switch x:Name="SwitchReminder"/>
-                                </HorizontalStackLayout>
-
-                            </VerticalStackLayout>
-
-                        </Border>
-
-                        <Button Text="Edit Profile"
-                                BackgroundColor="#8B7355"
-                                TextColor="White"
-                                CornerRadius="20"
-                                Clicked="OnEditProfileClicked"/>
-
-                    </VerticalStackLayout>
-
-                </Border>
+                <Label Text="Pet care"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="#4E463F"
+                       HorizontalOptions="Center" />
 
             </VerticalStackLayout>
 
-        </ScrollView>
+            <!-- PROFILE IMAGE -->
+            <Border Grid.Row="1"
+                    WidthRequest="105"
+                    HeightRequest="105"
+                    BackgroundColor="#E8DED5"
+                    StrokeThickness="0"
+                    HorizontalOptions="Center"
+                    ZIndex="2">
 
-        <!-- BOTTOM NAV -->
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="53" />
+                </Border.StrokeShape>
+
+                <Image x:Name="ProfileImage"
+                       Aspect="AspectFill"
+                       Source="profile_default.png" />
+
+            </Border>
+
+            <!-- PROFILE BODY -->
+            <Border Grid.Row="2"
+                    BackgroundColor="#E8DED5"
+                    StrokeThickness="0"
+                    Margin="0,-35,0,0"
+                    Padding="12,40,12,12">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="28,28,0,0" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- NAME AREA -->
+                    <VerticalStackLayout HorizontalOptions="Center"
+                                         Spacing="0">
+
+                        <Label x:Name="LblUserName"
+                               Text="User Name"
+                               FontSize="22"
+                               FontAttributes="Bold"
+                               TextColor="#4A403A"
+                               HorizontalOptions="Center" />
+
+                        <Label Text="Pet Parent"
+                               FontSize="11"
+                               TextColor="#6E625A"
+                               HorizontalOptions="Center" />
+
+                        <Button Text="✎ Edit Profile"
+                                Clicked="OnEditProfileClicked"
+                                BackgroundColor="White"
+                                TextColor="#6E625A"
+                                CornerRadius="14"
+                                FontSize="10"
+                                HeightRequest="26"
+                                Padding="14,0"
+                                Margin="0,3,0,0" />
+
+                    </VerticalStackLayout>
+
+                    <!-- PERSONAL INFORMATION -->
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            Padding="9">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label Text="PERSONAL INFORMATION"
+                                   FontSize="9"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" />
+
+                            <Border BackgroundColor="#BFAE9E"
+                                    StrokeThickness="0"
+                                    Padding="9">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="8">
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="👤"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Spacing="0">
+
+                                            <Label x:Name="LblFullName"
+                                                   FontSize="11"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   LineBreakMode="TailTruncation" />
+
+                                            <Label Text="Full Name"
+                                                   FontSize="9"
+                                                   TextColor="#3E362F" />
+
+                                        </VerticalStackLayout>
+
+                                        <Label Grid.Column="2"
+                                               Text="✎"
+                                               FontSize="12"
+                                               TextColor="#3E362F"
+                                               VerticalOptions="Center" />
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="☎"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Spacing="0">
+
+                                            <Label x:Name="LblPhone"
+                                                   FontSize="11"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   LineBreakMode="TailTruncation" />
+
+                                            <Label Text="Phone Number"
+                                                   FontSize="9"
+                                                   TextColor="#3E362F" />
+
+                                        </VerticalStackLayout>
+
+                                        <Label Grid.Column="2"
+                                               Text="✎"
+                                               FontSize="12"
+                                               TextColor="#3E362F"
+                                               VerticalOptions="Center" />
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="✉"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Spacing="0">
+
+                                            <Label x:Name="LblEmail"
+                                                   FontSize="11"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   LineBreakMode="TailTruncation" />
+
+                                            <Label Text="Email"
+                                                   FontSize="9"
+                                                   TextColor="#3E362F" />
+
+                                        </VerticalStackLayout>
+
+                                        <Label Grid.Column="2"
+                                               Text="✎"
+                                               FontSize="12"
+                                               TextColor="#3E362F"
+                                               VerticalOptions="Center" />
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="📍"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <VerticalStackLayout Grid.Column="1"
+                                                             Spacing="0">
+
+                                            <Label x:Name="LblAddress"
+                                                   FontSize="11"
+                                                   FontAttributes="Bold"
+                                                   TextColor="Black"
+                                                   LineBreakMode="TailTruncation" />
+
+                                            <Label Text="Home Address"
+                                                   FontSize="9"
+                                                   TextColor="#3E362F" />
+
+                                        </VerticalStackLayout>
+
+                                        <Label Grid.Column="2"
+                                               Text="✎"
+                                               FontSize="12"
+                                               TextColor="#3E362F"
+                                               VerticalOptions="Center" />
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                    <!-- NOTIFICATION SETTINGS -->
+                    <Border BackgroundColor="White"
+                            StrokeThickness="0"
+                            Padding="9">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="6">
+
+                            <Label Text="NOTIFICATION SETTINGS"
+                                   FontSize="9"
+                                   FontAttributes="Bold"
+                                   TextColor="Black" />
+
+                            <Border BackgroundColor="#BFAE9E"
+                                    StrokeThickness="0"
+                                    Padding="9">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="5" />
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout Spacing="6">
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="🔔"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <Label Grid.Column="1"
+                                               Text="Push Notifications"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               VerticalOptions="Center" />
+
+                                        <Switch x:Name="SwitchPush"
+                                                Grid.Column="2"
+                                                Scale="0.65"
+                                                VerticalOptions="Center" />
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="✉"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <Label Grid.Column="1"
+                                               Text="Email Updates"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               VerticalOptions="Center" />
+
+                                        <Switch x:Name="SwitchEmail"
+                                                Grid.Column="2"
+                                                Scale="0.65"
+                                                VerticalOptions="Center" />
+                                    </Grid>
+
+                                    <Grid ColumnDefinitions="28,*,Auto"
+                                          ColumnSpacing="6">
+
+                                        <Label Text="⏰"
+                                               FontSize="15"
+                                               VerticalOptions="Center" />
+
+                                        <Label Grid.Column="1"
+                                               Text="App Reminders"
+                                               FontSize="11"
+                                               FontAttributes="Bold"
+                                               TextColor="Black"
+                                               VerticalOptions="Center" />
+
+                                        <Switch x:Name="SwitchReminder"
+                                                Grid.Column="2"
+                                                Scale="0.65"
+                                                VerticalOptions="Center" />
+                                    </Grid>
+
+                                </VerticalStackLayout>
+
+                            </Border>
+
+                        </VerticalStackLayout>
+
+                    </Border>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </Grid>
+
+        <!-- BOTTOM NAV FIXED -->
         <controls:BottomNav Grid.Row="1"
-                            CurrentPage="Profile"/>
+                            CurrentPage="Profile" />
 
     </Grid>
 

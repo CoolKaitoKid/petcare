@@ -18,6 +18,7 @@ namespace petcare.Models
             db.CreateTableAsync<User>().Wait();
             db.CreateTableAsync<Pet>().Wait();
             db.CreateTableAsync<Appointment>().Wait();
+            db.CreateTableAsync<PasswordResetOtp>().Wait();
         }
 
         // ------------------- Users -------------------
@@ -134,6 +135,40 @@ namespace petcare.Models
         public async Task<int> DeleteAppointmentAsync(Appointment appointment)
         {
             return await db.DeleteAsync(appointment);
+        }
+        public async Task<int> SavePasswordResetOtpAsync(PasswordResetOtp otp)
+        {
+            return await db.InsertAsync(otp);
+        }
+
+        public async Task<PasswordResetOtp?> GetValidPasswordResetOtpAsync(string email, string code)
+        {
+            return await db.Table<PasswordResetOtp>()
+                           .Where(o =>
+                               o.Email == email &&
+                               o.Code == code &&
+                               o.IsUsed == false &&
+                               o.ExpiresAt > DateTime.UtcNow)
+                           .OrderByDescending(o => o.Id)
+                           .FirstOrDefaultAsync();
+        }
+
+        public async Task<int> MarkPasswordResetOtpUsedAsync(PasswordResetOtp otp)
+        {
+            otp.IsUsed = true;
+            return await db.UpdateAsync(otp);
+        }
+
+        public async Task<int> UpdateUserPasswordAsync(string email, string newPassword)
+        {
+            var user = await GetUserByEmailAsync(email);
+
+            if (user == null)
+                return 0;
+
+            user.PasswordHash = newPassword;
+
+            return await db.UpdateAsync(user);
         }
     }
 }

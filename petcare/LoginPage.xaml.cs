@@ -38,7 +38,12 @@ public partial class LoginPage : ContentPage
         }
     }
 
-    private async void GoToRegister(object sender, EventArgs e)
+    private async void OnForgotPasswordTapped(object sender, TappedEventArgs e)
+    {
+        await Navigation.PushAsync(new ForgotPasswordPage());
+    }
+
+    private async void GoToRegister(object sender, TappedEventArgs e)
     {
         await Shell.Current.GoToAsync("RegisterPage");
     }
